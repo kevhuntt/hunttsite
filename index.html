@@ -22,21 +22,29 @@
     <section id="features">
         <div class="container">
             <h2>Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-item" data-aos="fade-up">
-                    <img src="Huntt Drop Zone 1-portrait_s.png" alt="Feature 1">
-                    <h3>Earn Real Rewards</h3>
-                    <p>Turn your game achievements into real-world rewards instantly.</p>
+            <div class="carousel">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide current-slide">
+                            <img src="Huntt Drop Zone 1-portrait.png" alt="Feature 1">
+                            <h3>Earn Real Rewards</h3>
+                            <p>Turn your game achievements into real-world rewards instantly.</p>
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="snap a picture-portrait.png" alt="Feature 2">
+                            <h3>Scan Your Scores</h3>
+                            <p>Seamlessly scan your game scores and get rewarded.</p>
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="Huntt unlock rewards-portrait.png" alt="Feature 3">
+                            <h3>Join Challenges</h3>
+                            <p>Participate in exclusive gaming challenges and win big.</p>
+                        </li>
+                    </ul>
                 </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="snap a picture-portrait.png" alt="Feature 2">
-                    <h3>Scan Your Scores</h3>
-                    <p>Seamlessly scan your game scores and get rewarded.</p>
-                </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
-                    <img src="Huntt unlock rewards-portrait.png" alt="Feature 3">
-                    <h3>Join Challenges</h3>
-                    <p>Participate in exclusive gaming challenges and win big.</p>
+                <div class="carousel-nav">
+                    <button class="carousel-btn carousel-btn-left">&#10094;</button>
+                    <button class="carousel-btn carousel-btn-right">&#10095;</button>
                 </div>
             </div>
         </div>
@@ -67,5 +75,39 @@
             easing: 'ease-in-out', /* Animation easing */
         });
     </script>
+ <script>
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.carousel-btn-right');
+    const prevButton = document.querySelector('.carousel-btn-left');
+    
+    const moveToSlide = (track, currentSlide, targetSlide) => {
+        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        currentSlide.classList.remove('current-slide');
+        targetSlide.classList.add('current-slide');
+    }
+
+    slides.forEach((slide, index) => {
+        slide.style.left = 100 * index + '%';
+    });
+
+    nextButton.addEventListener('click', e => {
+        const currentSlide = track.querySelector('.current-slide');
+        const nextSlide = currentSlide.nextElementSibling;
+
+        if (nextSlide) {
+            moveToSlide(track, currentSlide, nextSlide);
+        }
+    });
+
+    prevButton.addEventListener('click', e => {
+        const currentSlide = track.querySelector('.current-slide');
+        const prevSlide = currentSlide.previousElementSibling;
+
+        if (prevSlide) {
+            moveToSlide(track, currentSlide, prevSlide);
+        }
+    });
+</script>   
 </body>
 </html>

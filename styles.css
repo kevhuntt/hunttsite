@@ -130,3 +130,64 @@ footer {
         max-width: 100%;
     }
 }
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+
+    list-style-type: none; /* Remove the bullets or dots */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel-slide img {
+    max-width: 80%; /* Scale down the image size */
+    max-height: 500px; /* Limit the height to make sure images aren't too tall */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    object-fit: contain; /* Ensure the image scales nicely */
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.carousel-btn-left {
+    left: 10px;
+}
+
+.carousel-btn-right {
+    right: 10px;
+}

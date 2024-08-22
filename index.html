@@ -66,40 +66,43 @@
             <p>&copy; 2024 Huntt. All rights reserved.</p>
         </div>
     </footer>
+<script>
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.carousel-btn-right');
+    const prevButton = document.querySelector('.carousel-btn-left');
+    
+    const moveToSlide = (track, currentSlide, targetSlide) => {
+        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        currentSlide.classList.remove('current-slide');
+        targetSlide.classList.add('current-slide');
+    }
 
-    <script>
-        const track = document.querySelector('.carousel-track');
-        const slides = Array.from(track.children);
-        const nextButton = document.querySelector('.carousel-btn-right');
-        const prevButton = document.querySelector('.carousel-btn-left');
-        
-        const moveToSlide = (track, currentSlide, targetSlide) => {
-            track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
-            currentSlide.classList.remove('current-slide');
-            targetSlide.classList.add('current-slide');
+    slides.forEach((slide, index) => {
+        slide.style.left = 100 * index + '%';
+    });
+
+    nextButton.addEventListener('click', e => {
+        const currentSlide = track.querySelector('.current-slide');
+        const nextSlide = currentSlide.nextElementSibling;
+
+        if (nextSlide) {
+            moveToSlide(track, currentSlide, nextSlide);
+        } else {
+            moveToSlide(track, currentSlide, slides[0]); // Reset to the first slide
         }
+    });
 
-        slides.forEach((slide, index) => {
-            slide.style.left = 100 * index + '%';
-        });
+    prevButton.addEventListener('click', e => {
+        const currentSlide = track.querySelector('.current-slide');
+        const prevSlide = currentSlide.previousElementSibling;
 
-        nextButton.addEventListener('click', e => {
-            const currentSlide = track.querySelector('.current-slide');
-            const nextSlide = currentSlide.nextElementSibling;
-
-            if (nextSlide) {
-                moveToSlide(track, currentSlide, nextSlide);
-            }
-        });
-
-        prevButton.addEventListener('click', e => {
-            const currentSlide = track.querySelector('.current-slide');
-            const prevSlide = currentSlide.previousElementSibling;
-
-            if (prevSlide) {
-                moveToSlide(track, currentSlide, prevSlide);
-            }
-        });
-    </script>
+        if (prevSlide) {
+            moveToSlide(track, currentSlide, prevSlide);
+        } else {
+            moveToSlide(track, currentSlide, slides[slides.length - 1]); // Jump to the last slide
+        }
+    });
+</script>
 </body>
 </html>

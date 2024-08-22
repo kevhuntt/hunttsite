@@ -99,7 +99,7 @@ header p {
 
 .carousel-slide img {
     max-width: 80%; /* Scale down the image size */
-    max-height: 300px; /* Limit the height */
+    max-height: 500px; /* Limit the height */
     border-radius: 5px;
     margin-bottom: 10px;
     object-fit: contain; /* Ensure the image scales nicely */
